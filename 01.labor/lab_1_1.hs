@@ -81,6 +81,32 @@ primszam x = osztok x == [1, x]
 
 primszamN n = [i | i <- [1..n], primszam i]
 
+primszamN2 n = [i | i <- [1..n], primszamL i]
+    where
+        primszamL si = osztokL si == [1,si]
+        osztokL si2 = [i | i <- [1..si2], mod si2 i == 0]
+
+-- - n-ig az összetett számok listáját,
+osszetett n = [i | i <- [1..n], primszam i == False]
+
+osszetett2 n = [i | i <- [1..n], not(primszam i)]
+
+paratlanOsszetett n = [i | i <- [1..n], primszam i == False, mod i 2 /= 0]
+
+paratlanOsszetett2 n = [i | i <- [1..n], not (primszam i), odd i]
+
+pitagorasz n = [(a, b, c) | c <- [1..n], b <- [1..c], a <- [1..b], a ^ 2 + b ^ 2 == c ^ 2]
+
+betuSzam = zip ['a' .. 'z'] [0 .. 25]
+
+betuSzam2 = zip ['a' .. 'z'] [0 .. ]
+
+szamok = zip [0..5][5, 4 ..]
+
+szamok2 n = zip [0..n] [n, n-1 .. 0]
+
+szamok3 n = [(i, n-i) | i <- [0..n]]
+
 
 
 
