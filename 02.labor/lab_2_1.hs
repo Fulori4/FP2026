@@ -2,6 +2,7 @@
 -- I. Könyvtárfüggvények használata nélkül, definiáljuk azt a függvényt, amely meghatározza:
 
 -- - egy szám számjegyeinek szorzatát (2 módszerrel),
+
 -- - egy szám számjegyeinek összegét (2 módszerrel),
 -- - egy szám számjegyeinek számát (2 módszerrel),
 -- - egy szám azon számjegyeinek összegét, mely paraméterként van megadva, pl. legyen a függvény neve fugv4, ekkor a következő meghívásra, a következő eredményt kell kapjuk:
