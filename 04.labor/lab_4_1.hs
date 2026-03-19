@@ -49,7 +49,12 @@ fiboAB a b = dropWhile (<a) . takeWhile (<b) $ fibo
 --III. Könyvtárfüggvények használata nélkül írjuk meg azt a Haskell függvényt, amely
 
 -- meghatározza egy lista pozitív elemeinek átlagát,
+
+atlag ls = sum ls / fromIntegral(length ls)
+pozAtlag ls = atlag [i | i<-ls,i>0]
 -- meghatározzuk azt a listát, amely tartalmazza az eredeti lista minden n-ik elemét,
+listaN ls n = [i | (idx,i) <- zip [1 ..] ls , mod idx n==0]
+--listaN2 ls n
 -- tükrözi egy lista elemeit,
 -- két módszerrel is meghatározza egy lista legnagyobb elemeinek pozícióit: a lista elemeit kétszer járja be, illetve úgy hogy a lista elemeit csak egyszer járja be,
 -- meghatározza egy lista leggyakrabban előforduló elemét.
