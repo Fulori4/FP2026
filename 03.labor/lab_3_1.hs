@@ -66,6 +66,7 @@ myMinimum2 (x1 : x2 : xs)
 
 myMinimum3 ls = foldr1 min ls
 
+
 myMinimum4 ls = minimum ls
 
 -- - meghatározza egy lista legnagyobb elemét (myMaximum),
