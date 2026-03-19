@@ -33,9 +33,19 @@ maxParatlanOszto n = last $ filter odd $ osztok n
 
 maxParatlanOszto2 n = last [i | i<-[1,3..n],mod n i ==0]
 -- meghatározza, hogy egy tízes számrendszerbeli szám p számrendszerben, hány számjegyet tartalmaz,
+decP x p
+    | x<p = [x]
+    | otherwise = decP(div x p) p ++ [mod x p]
+
+decPMax x p = maximum $ decP x p
 -- meghatározza, hogy egy tízes számrendszerbeli szám p számrendszerbeli alakjában melyik a legnagyobb számjegy,
 -- meghatározza az $a$ és $b$ közötti Fibonacci számokat, $a > 50$.
 
+fibo = fiboSg 0 1 0
+    where
+        fiboSg a b res =res : fiboSg b res (res + b)
+
+fiboAB a b = dropWhile (<a) . takeWhile (<b) $ fibo
 --III. Könyvtárfüggvények használata nélkül írjuk meg azt a Haskell függvényt, amely
 
 -- meghatározza egy lista pozitív elemeinek átlagát,
