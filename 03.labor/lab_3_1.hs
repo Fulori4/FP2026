@@ -51,6 +51,11 @@ myProduct4 ls res = foldr (\x res -> (*) x res) res ls
 myProduct5 ls = foldr1 (\x -> (*) x) ls
 
 -- - meghatározza egy lista legkisebb elemét (myMinimum),
+
+
+
+
+
 myMinimum [x] = x
 myMinimum (x1:x2:xs) = if x1 < x2 then myMinimum (x1 : xs) else myMinimum (x2 : xs)
 
