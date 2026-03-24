@@ -45,6 +45,7 @@ fibo = fiboSg 0 1 0
     where
         fiboSg a b res =res : fiboSg b res (res + b)
 
+fiboAB :: Integer -> Integer -> [Integer]
 fiboAB a b = dropWhile (<a) . takeWhile (<b) $ fibo
 --III. Könyvtárfüggvények használata nélkül írjuk meg azt a Haskell függvényt, amely
 
@@ -53,6 +54,7 @@ fiboAB a b = dropWhile (<a) . takeWhile (<b) $ fibo
 atlag ls = sum ls / fromIntegral(length ls)
 pozAtlag ls = atlag [i | i<-ls,i>0]
 -- meghatározzuk azt a listát, amely tartalmazza az eredeti lista minden n-ik elemét,
+listaN :: Integral a1 => [a2] -> a1 -> [a2]
 listaN ls n = [i | (idx,i) <- zip [1 ..] ls , mod idx n==0]
 -- tükrözi egy lista elemeit,
 
