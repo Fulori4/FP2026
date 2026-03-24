@@ -1,4 +1,42 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --I. Definiáljuk azt a Haskell-listát, amely tartalmazza:
 -- az első n páros szám négyzetét,
 parosNegyzet n = take n [i^2 | i<-[2,4..]]
@@ -57,7 +95,11 @@ pozAtlag ls = atlag [i | i<-ls,i>0]
 listaN :: Integral a1 => [a2] -> a1 -> [a2]
 listaN ls n = [i | (idx,i) <- zip [1 ..] ls , mod idx n==0]
 -- tükrözi egy lista elemeit,
-
+tukroz [] = []
+tukroz (x:xs) = tukroz xs ++ [x]
 
 -- két módszerrel is meghatározza egy lista legnagyobb elemeinek pozícióit: a lista elemeit kétszer járja be, illetve úgy hogy a lista elemeit csak egyszer járja be,
+maxElemPoz ls = [idx | (idx,i) <-zip [1..] ls , i==myMax ]
+ where
+    myMax = maximum ls
 -- meghatározza egy lista leggyakrabban előforduló elemét.
