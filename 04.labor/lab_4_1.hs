@@ -103,8 +103,8 @@ maxElemPoz ls = [idx | (idx,i) <-zip [1..] ls , i==myMax ]
  where
     myMax = maximum ls
 -- meghatározza egy lista leggyakrabban előforduló elemét.
-elof ls = maxElofElem
-    where
-        maxElofSzam = maximum $ map length $ (group . sort) ls
-        ls2 = map (\x -> (x,length x)) $ (group . sort) ls
-        maxElofElem = head $ fst $ head $ filter (\x -> snd x == maxElofszam) ls2
+-- elof ls = maxElofElem
+--     where
+--         maxElofSzam = maximum $ map length $ (group . sort) ls
+--         ls2 = map (\x -> (x,length x)) $ (group . sort) ls
+--         maxElofElem = head $ fst $ head $ filter (\x -> snd x == maxElofszam) ls2
