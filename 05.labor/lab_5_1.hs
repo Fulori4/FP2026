@@ -1,3 +1,4 @@
+import Distribution.Simple.Setup (trueArg)
 -- - Írjunk egy Haskell-függvényt, amely egy String típusú listából meghatározza azokat a szavakat, amelyek karakterszáma a legkisebb. Például ha a lista a következő szavakat tartalmazza:  function class Float higher-order monad tuple variable Maybe recursion  akkor az eredmény-lista a következőkből áll: class Float monad tuple Maybe
 -- - Írjunk egy talalat Haskell-függvényt, amely meghatározza azt a listát, amely a bemeneti listában megkeresi egy megadott elem előfordulási pozícióit.
 --   Például a következő függvényhívások esetében az első az 5-ös előfordulási pozícióit, míg a második az e előfordulási pozícióinak listáját határozza meg.
@@ -37,6 +38,65 @@
 -- - n-ig a négyzetszámokat.
 -- - meghatározza a $$P(x) = a_0 + a_1 x + a_2 x^2 + \ldots + a_n x^n$$ polinom adott $x_0$ értékre való behelyettesítési értékét: $$a_0 + x_0(a_1 + x_0(a_2 + x_0(a_3 + \ldots + x_0(a_{n-1}+ x_0 \cdot a_n))))$$
 
-myLength ls = fold1 op 0 ls
+myLengthL ls = foldl op 0 ls
     where
-        op k res = res+1
+        op k res = res + 1
+
+myLengthR ls = foldr op 0 ls
+    where
+        op k res = res + 1
+
+mySumL ls = foldl op 0 ls
+    where
+        op res k = res + k
+
+mySumR ls = foldr op 0 ls
+    where 
+        op k res = res + k
+
+myElemL c ls = foldl(op c) False ls
+    where
+        op c res k 
+            | c == k = True
+            | otherwise = res
+
+myElemR c ls = foldr(op c) False ls
+    where
+        op c k res = (c==k) || res
+
+
+myReverseL ls = foldl op [] ls
+    where 
+        op res k = k : res
+
+myReverseR ls = foldr op [] ls
+    where
+        --op k res = res ++ [k]
+        op k res = res <>[k]
+
+myProductL ls = foldl op 1 ls
+    where
+        op res k = res * k
+
+myProductR ls = foldl op 1 ls
+    where
+        op k res = res * k
+
+myMaximumL ls = foldl op (head ls) ls
+    where
+        op res k
+            | res > k = res
+            | otherwise = k
+
+myMaximumL1 ls = foldl1 op ls
+    where
+        op res k
+            | res > k = res
+            | otherwise = k
+
+ 
+
+
+
+
+ 
