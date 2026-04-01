@@ -1,4 +1,5 @@
 import Distribution.Simple.Setup (trueArg)
+import Control.Monad.Trans.Cont (reset)
 -- - Írjunk egy Haskell-függvényt, amely egy String típusú listából meghatározza azokat a szavakat, amelyek karakterszáma a legkisebb. Például ha a lista a következő szavakat tartalmazza:  function class Float higher-order monad tuple variable Maybe recursion  akkor az eredmény-lista a következőkből áll: class Float monad tuple Maybe
 -- - Írjunk egy talalat Haskell-függvényt, amely meghatározza azt a listát, amely a bemeneti listában megkeresi egy megadott elem előfordulási pozícióit.
 --   Például a következő függvényhívások esetében az első az 5-ös előfordulási pozícióit, míg a második az e előfordulási pozícióinak listáját határozza meg.
@@ -94,7 +95,12 @@ myMaximumL1 ls = foldl1 op ls
             | res > k = res
             | otherwise = k
 
- 
+myIns x ls = foldl (op x) [] ls
+    where 
+        op x res k 
+            | x > k = k : res
+            | otherwise = x : k : res
+
 
 
 
