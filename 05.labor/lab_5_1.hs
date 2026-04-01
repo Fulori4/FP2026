@@ -95,9 +95,9 @@ myMaximumL1 ls = foldl1 op ls
             | res > k = res
             | otherwise = k
 
-myIns x ls = foldl (op x) [] ls
+myIns x ls = foldr (op x) [] ls
     where 
-        op x res k 
+        op x k res  
             | x > k = k : res
             | otherwise = x : k : res
 
