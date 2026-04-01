@@ -102,7 +102,10 @@ myIns x ls = foldr (op x) [] ls
             | otherwise = x : k : res
 
 
-
+myMap fg ls = foldr (op fg) [] ls
+    where
+        op fg k res = fg k : res
+    
 
 
  
