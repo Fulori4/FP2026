@@ -114,4 +114,4 @@ myMap fg ls = foldr (op fg) [] ls
 --         | otherwise = res
 
 
- polinom x0 ls = foldr (op x0)
+ --polinom x0 ls = foldr (op x0)
