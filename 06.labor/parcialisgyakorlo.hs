@@ -1,5 +1,6 @@
 import Data.List (sort)
 import Data.List (intercalate)
+import System.Win32 (LOCALESIGNATURE(lsCsbDefault))
 
 
 -- 1. Egy [(String, Int)] típusú lista eleme egy városnevet és a megfelelő népesség
@@ -45,7 +46,10 @@ fel1 = do
 -- 23561 61
 -- ● Amennyiben nincsenek ilyen számok, a kimenet a következő: “Nincsenek
 -- olyan szamok, amelyek nem tartalmazzak a 0 szamjegyet.”
-
+nincsNulla n
+    |mod n 10 == 0 = False
+    |n<10 = True
+    |otherwise = nincsNulla(div n 10)
 fel2 = do
     let ls = [17603, 4005, 3223, 816252, 70, 23561, 9018007, 807, 61, 300]
         joSzamok = filter (notElem '0' . show) ls
@@ -57,3 +61,25 @@ fel2 = do
 
 
 main = fel2
+
+-- Egy listában karakterláncok vannak, írjunk egy Haskell programot, amely kiírja
+-- azokat a karakterláncokat a képernyőre egymás alá rendezve ábécé
+-- sorrendbe, amelyekben nincsenek számjegyek.
+-- Például:
+
+-- ● Bemenet: ["2023tuple", "function", "float", "higher-order", "variable10",
+-- "may13be", "0recursion", "monad", "class"]
+-- ● Kimenet:
+-- A karakterlancok, amelyek nem tartalmaznak szamokat:
+-- class
+-- float
+-- function
+-- Higher-order
+-- monad
+
+fel3 = do
+    let ls = ["2023tuple", "function", "float", "higher-order", "variable10",
+              "may13be", "0recursion", "monad", "class"]
+
+        ls2 = filter(notElem (map(\i -> i)[0..9])) ls
+    print ls2
